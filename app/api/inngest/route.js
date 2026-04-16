@@ -1,13 +1,12 @@
-// app/api/inngest/route.js
 import { serve } from "inngest/next";
 
-// ✅ IMPORTANT: correct import path
+// ✅ FIXED: use relative path (IMPORTANT)
 import {
   inngest,
   syncUserCreation,
   syncUserUpdation,
   syncUserDeletion,
-} from "@/app/config/inngest";
+} from "../../config/inngest";
 
 // ✅ Required for Vercel
 export const runtime = "nodejs";
