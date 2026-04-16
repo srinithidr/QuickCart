@@ -1,6 +1,6 @@
 import { serve } from "inngest/next";
 
-// ✅ FIXED: use relative path (IMPORTANT)
+// ✅ correct relative path
 import {
   inngest,
   syncUserCreation,
@@ -11,7 +11,7 @@ import {
 // ✅ Required for Vercel
 export const runtime = "nodejs";
 
-// ✅ Register functions
+// ✅ API handlers
 export const { GET, POST } = serve({
   client: inngest,
   functions: [

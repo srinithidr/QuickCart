@@ -1,4 +1,3 @@
-// app/config/inngest.js
 import { Inngest } from "inngest";
 import connectDB from "./db";
 import User from "@/models/User";
@@ -8,9 +7,7 @@ export const inngest = new Inngest({
   id: "endlesscart",
 });
 
-// ---------------------
-// Create User
-// ---------------------
+// ✅ Create User
 export const syncUserCreation = inngest.createFunction(
   { id: "sync-user-from-clerk" },
   { event: "clerk/user.created" },
@@ -20,7 +17,7 @@ export const syncUserCreation = inngest.createFunction(
     const userData = {
       _id: id,
       email: email_addresses[0].email_address,
-      name: `${first_name} ${last_name}`,
+      name: first_name + " " + last_name,
       image_url: image_url,
     };
 
@@ -29,9 +26,7 @@ export const syncUserCreation = inngest.createFunction(
   }
 );
 
-// ---------------------
-// Update User
-// ---------------------
+// ✅ Update User
 export const syncUserUpdation = inngest.createFunction(
   { id: "update-user-from-clerk" },
   { event: "clerk/user.updated" },
@@ -41,7 +36,7 @@ export const syncUserUpdation = inngest.createFunction(
     const userData = {
       _id: id,
       email: email_addresses[0].email_address,
-      name: `${first_name} ${last_name}`,
+      name: first_name + " " + last_name,
       image_url: image_url,
     };
 
@@ -50,9 +45,7 @@ export const syncUserUpdation = inngest.createFunction(
   }
 );
 
-// ---------------------
-// Delete User
-// ---------------------
+// ✅ Delete User
 export const syncUserDeletion = inngest.createFunction(
   { id: "delete-user-with-clerk" },
   { event: "clerk/user.deleted" },
